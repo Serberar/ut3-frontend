@@ -1,4 +1,4 @@
-const API_VALIDAR = 'http://localhost:3000/validar';
+const API_VALIDAR = 'https://ut3-backend.onrender.com/validar';
 
 function mostrar(html) {
   const div = document.getElementById('resultado');
@@ -33,7 +33,7 @@ async function verificar() {
   } catch {
     mostrar(`<div class="resultado-fail">
       <div class="resultado-etiqueta">No se puede conectar con el servidor</div>
-      <div class="resultado-errores"><div class="resultado-err">Arranca el servidor primero: cd actividad4 &amp;&amp; node server.js</div></div>
+      <div class="resultado-errores"><div class="resultado-err">Ponte en contacto con el administrador del sistema</div></div>
     </div>`);
   }
 }
