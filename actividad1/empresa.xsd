@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema
+  xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  targetNamespace="http://escuelaprogramacion.es/schema"
+  xmlns:esc="http://escuelaprogramacion.es/schema"
+  elementFormDefault="qualified">
+
+  <xs:annotation>
+    <xs:documentation>
+      Esquema XSD para la representación de datos de una escuela de programación.
+      Incluye información general, cursos, alumnos y proyectos académicos.
+      Namespace: http://escuelaprogramacion.es/schema
+      Versión: 1.0
+    </xs:documentation>
+  </xs:annotation>
+
+  <!-- TIPOS SIMPLES REUTILIZABLES CON RESTRICCIONES -->
+
+  <xs:simpleType name="tipoCIF">
+    <xs:annotation>
+      <xs:documentation>CIF español: letra inicial + 7 dígitos + letra o dígito de control.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[A-Z][0-9]{7}[A-Z0-9]"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="tipoDNI">
+    <xs:annotation>
+      <xs:documentation>DNI español: 8 dígitos numéricos seguidos de una letra mayúscula.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[0-9]{8}[A-Z]"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="tipoTelefono">
+    <xs:annotation>
+      <xs:documentation>Teléfono español de 9 dígitos. Comienza por 6, 7, 8 o 9.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[6-9][0-9]{8}"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="tipoEmail">
+    <xs:annotation>
+      <xs:documentation>Dirección de correo electrónico con formato estándar.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="tipoCodigoPostal">
+    <xs:annotation>
+      <xs:documentation>Código postal español de exactamente 5 dígitos.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[0-9]{5}"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="tipoTasa">
+    <xs:annotation>
+      <xs:documentation>Importe económico no negativo con hasta 2 decimales. Usado para tasas de matrícula y presupuestos.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:decimal">
+      <xs:minInclusive value="0"/>
+      <xs:fractionDigits value="2"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="tipoEstadoAlumno">
+    <xs:annotation>
+      <xs:documentation>Estado académico del alumno. Valores controlados por enumeración.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Activo"/>
+      <xs:enumeration value="Graduado"/>
+      <xs:enumeration value="Suspendido"/>
+      <xs:enumeration value="Baja"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="tipoNivelCurso">
+    <xs:annotation>
+      <xs:documentation>Nivel de dificultad del curso. Valores controlados por enumeración.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Iniciación"/>
+      <xs:enumeration value="Intermedio"/>
+      <xs:enumeration value="Avanzado"/>
+      <xs:enumeration value="Profesional"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="tipoEstadoProyecto">
+    <xs:annotation>
+      <xs:documentation>Estado actual del proyecto dentro de su ciclo de evaluación.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Planificado"/>
+      <xs:enumeration value="En desarrollo"/>
+      <xs:enumeration value="Entregado"/>
+      <xs:enumeration value="Evaluado"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- TIPOS COMPLEJOS -->
+
+  <xs:complexType name="tipoDireccion">
+    <xs:annotation>
+      <xs:documentation>Dirección postal completa. El campo piso es opcional; pais tiene valor por defecto "España".</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="calle"        type="xs:string"/>
+      <xs:element name="numero"       type="xs:positiveInteger"/>
+      <xs:element name="piso"         type="xs:string"             minOccurs="0"/>
+      <xs:element name="codigoPostal" type="esc:tipoCodigoPostal"/>
+      <xs:element name="ciudad"       type="xs:string"/>
+      <xs:element name="provincia"    type="xs:string"/>
+      <xs:element name="pais"         type="xs:string"             default="España"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="tipoCurso">
+    <xs:annotation>
+      <xs:documentation>
+        Curso ofertado por la escuela.
+        Atributo id (xs:ID): identificador único en todo el documento.
+        Atributo nivel (tipoNivelCurso): nivel de dificultad del curso.
+        Elemento responsable (xs:IDREF): referencia al id del alumno tutor o monitor del curso.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="nombre"        type="xs:string"/>
+      <xs:element name="descripcion"   type="xs:string"           minOccurs="0"/>
+      <xs:element name="responsable"   type="xs:IDREF"            minOccurs="0"/>
+      <xs:element name="horasLectivas" type="xs:positiveInteger"/>
+      <xs:element name="precio"        type="esc:tipoTasa"/>
+    </xs:sequence>
+    <xs:attribute name="id"    type="xs:ID"              use="required"/>
+    <xs:attribute name="nivel" type="esc:tipoNivelCurso" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="tipoAlumno">
+    <xs:annotation>
+      <xs:documentation>
+        Datos personales y académicos de un alumno.
+        Atributo id (xs:ID): identificador único en todo el documento.
+        Atributo idCurso (xs:IDREF): referencia al id del curso en el que está matriculado.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="nombre"         type="xs:string"/>
+      <xs:element name="apellidos"      type="xs:string"/>
+      <xs:element name="dni"            type="esc:tipoDNI"/>
+      <xs:element name="estado"         type="esc:tipoEstadoAlumno"/>
+      <xs:element name="tasaMatricula"  type="esc:tipoTasa"/>
+      <xs:element name="fechaMatricula" type="xs:date"/>
+      <xs:element name="email"          type="esc:tipoEmail"/>
+      <xs:element name="telefono"       type="esc:tipoTelefono"   minOccurs="0"/>
+    </xs:sequence>
+    <xs:attribute name="id"      type="xs:ID"    use="required"/>
+    <xs:attribute name="idCurso" type="xs:IDREF" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="tipoProyecto">
+    <xs:annotation>
+      <xs:documentation>
+        Proyecto académico con fechas, presupuesto, estado y lista de alumnos participantes.
+        Atributo id (xs:ID): identificador único en todo el documento.
+        Atributo idResponsable (xs:IDREF): referencia al id del alumno que lidera el proyecto.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="nombre"       type="xs:string"/>
+      <xs:element name="descripcion"  type="xs:string"              minOccurs="0"/>
+      <xs:element name="fechaInicio"  type="xs:date"/>
+      <xs:element name="fechaEntrega" type="xs:date"                minOccurs="0"/>
+      <xs:element name="presupuesto"  type="esc:tipoTasa"/>
+      <xs:element name="estado"       type="esc:tipoEstadoProyecto"/>
+      <xs:element name="participantes">
+        <xs:annotation>
+          <xs:documentation>Lista de alumnos que participan en el proyecto con su rol específico.</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="participacion" maxOccurs="unbounded">
+              <xs:complexType>
+                <xs:attribute name="idAlumno" type="xs:IDREF"  use="required"/>
+                <xs:attribute name="rol"      type="xs:string" use="optional"/>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="id"            type="xs:ID"    use="required"/>
+    <xs:attribute name="idResponsable" type="xs:IDREF" use="required"/>
+  </xs:complexType>
+
+  <!-- ELEMENTO RAÍZ -->
+  <xs:element name="escuela">
+    <xs:annotation>
+      <xs:documentation>
+        Elemento raíz del documento. El atributo modalidad indica la modalidad de impartición.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+
+        <xs:element name="informacion">
+          <xs:annotation>
+            <xs:documentation>Datos de identificación y contacto de la escuela.</xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="nombre"    type="xs:string"/>
+              <xs:element name="cif"       type="esc:tipoCIF"/>
+              <xs:element name="direccion" type="esc:tipoDireccion"/>
+              <xs:element name="telefono"  type="esc:tipoTelefono"/>
+              <xs:element name="email"     type="esc:tipoEmail"/>
+              <xs:element name="web"       type="xs:anyURI" minOccurs="0"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+
+        <xs:element name="cursos">
+          <xs:annotation>
+            <xs:documentation>Catálogo de cursos ofertados por la escuela. Se requiere al menos uno.</xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="curso" type="esc:tipoCurso"
+                          minOccurs="1" maxOccurs="unbounded"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+
+        <xs:element name="alumnos">
+          <xs:annotation>
+            <xs:documentation>Colección de alumnos matriculados. Se requiere al menos uno.</xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="alumno" type="esc:tipoAlumno"
+                          minOccurs="1" maxOccurs="unbounded"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+
+        <xs:element name="proyectos" minOccurs="0">
+          <xs:annotation>
+            <xs:documentation>Colección de proyectos académicos activos o históricos. Elemento opcional.</xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="proyecto" type="esc:tipoProyecto"
+                          minOccurs="1" maxOccurs="unbounded"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+
+      </xs:sequence>
+      <xs:attribute name="modalidad" type="xs:string" use="required"/>
+    </xs:complexType>
+
+    <!-- Unicidad de DNI entre todos los alumnos -->
+    <xs:unique name="unicidadDNI">
+      <xs:selector xpath="esc:alumnos/esc:alumno"/>
+      <xs:field    xpath="esc:dni"/>
+    </xs:unique>
+
+    <!-- Unicidad de email entre todos los alumnos -->
+    <xs:unique name="unicidadEmailAlumno">
+      <xs:selector xpath="esc:alumnos/esc:alumno"/>
+      <xs:field    xpath="esc:email"/>
+    </xs:unique>
+
+  </xs:element>
+
+</xs:schema>

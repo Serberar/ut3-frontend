@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<escuela
+  xmlns="http://escuelaprogramacion.es/schema"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://escuelaprogramacion.es/schema ../actividad1/empresa.xsd"
+  modalidad="Presencial">
+
+  <!-- ==================== INFORMACIÓN GENERAL ==================== -->
+  <informacion>
+    <nombre>Escuela de Programación S.L.</nombre>
+    <cif>B1234567A</cif>
+    <direccion>
+      <calle>Calle Gran Vía</calle>
+      <numero>45</numero>
+      <piso>3B</piso>
+      <codigoPostal>28013</codigoPostal>
+      <ciudad>Madrid</ciudad>
+      <provincia>Madrid</provincia>
+      <pais>España</pais>
+    </direccion>
+    <telefono>912345678</telefono>
+    <email>info@escuelaprogramacion.es</email>
+    <web>https://www.escuelaprogramacion.es</web>
+  </informacion>
+
+  <!-- ==================== CURSOS ==================== -->
+  <cursos>
+
+    <curso id="cur001" nivel="Avanzado">
+      <nombre>Desarrollo Web Full Stack</nombre>
+      <descripcion>Formación completa en tecnologías frontend y backend: HTML, CSS, JavaScript, Node.js y bases de datos</descripcion>
+      <responsable>alm001</responsable>
+      <horasLectivas>600</horasLectivas>
+      <precio>2500.00</precio>
+    </curso>
+
+    <curso id="cur002" nivel="Intermedio">
+      <nombre>Python para Data Science</nombre>
+      <descripcion>Análisis de datos, machine learning y visualización con Python, pandas y scikit-learn</descripcion>
+      <responsable>alm003</responsable>
+      <horasLectivas>300</horasLectivas>
+      <precio>1500.00</precio>
+    </curso>
+
+    <curso id="cur003" nivel="Intermedio">
+      <nombre>Administración de Sistemas</nombre>
+      <descripcion>Gestión de servidores Linux, virtualización, contenedores Docker y servicios en la nube</descripcion>
+      <responsable>alm004</responsable>
+      <horasLectivas>400</horasLectivas>
+      <precio>1800.00</precio>
+    </curso>
+
+  </cursos>
+
+  <!-- ==================== ALUMNOS ==================== -->
+  <alumnos>
+
+    <alumno id="alm001" idCurso="cur001">
+      <nombre>Carlos</nombre>
+      <apellidos>García López</apellidos>
+      <dni>12345678A</dni>
+      <estado>Activo</estado>
+      <tasaMatricula>2500.00</tasaMatricula>
+      <fechaMatricula>2023-09-15</fechaMatricula>
+      <email>carlos.garcia@escuelaprogramacion.es</email>
+      <telefono>612345678</telefono>
+    </alumno>
+
+    <alumno id="alm002" idCurso="cur001">
+      <nombre>Ana</nombre>
+      <apellidos>Martínez Ruiz</apellidos>
+      <dni>87654321B</dni>
+      <estado>Activo</estado>
+      <tasaMatricula>2500.00</tasaMatricula>
+      <fechaMatricula>2023-09-15</fechaMatricula>
+      <email>ana.martinez@escuelaprogramacion.es</email>
+      <telefono>623456789</telefono>
+    </alumno>
+
+    <alumno id="alm003" idCurso="cur002">
+      <nombre>Luis</nombre>
+      <apellidos>Fernández Sánchez</apellidos>
+      <dni>11223344C</dni>
+      <estado>Graduado</estado>
+      <tasaMatricula>1500.00</tasaMatricula>
+      <fechaMatricula>2022-03-01</fechaMatricula>
+      <email>luis.fernandez@escuelaprogramacion.es</email>
+    </alumno>
+
+    <alumno id="alm004" idCurso="cur003">
+      <nombre>María</nombre>
+      <apellidos>González Pérez</apellidos>
+      <dni>55667788D</dni>
+      <estado>Activo</estado>
+      <tasaMatricula>1800.00</tasaMatricula>
+      <fechaMatricula>2024-01-10</fechaMatricula>
+      <email>maria.gonzalez@escuelaprogramacion.es</email>
+      <telefono>634567890</telefono>
+    </alumno>
+
+    <alumno id="alm005" idCurso="cur001">
+      <nombre>Javier</nombre>
+      <apellidos>Moreno Castillo</apellidos>
+      <dni>99887766E</dni>
+      <estado>Activo</estado>
+      <tasaMatricula>2500.00</tasaMatricula>
+      <fechaMatricula>2025-09-01</fechaMatricula>
+      <email>javier.moreno@escuelaprogramacion.es</email>
+    </alumno>
+
+  </alumnos>
+
+  <!-- ==================== PROYECTOS ==================== -->
+  <proyectos>
+
+    <proyecto id="proy001" idResponsable="alm001">
+      <nombre>Portal del Alumno</nombre>
+      <descripcion>Aplicación web para consulta de notas, horarios y comunicación con la escuela</descripcion>
+      <fechaInicio>2026-01-10</fechaInicio>
+      <fechaEntrega>2026-06-30</fechaEntrega>
+      <presupuesto>500.00</presupuesto>
+      <estado>En desarrollo</estado>
+      <participantes>
+        <participacion idAlumno="alm001" rol="Líder de proyecto"/>
+        <participacion idAlumno="alm002" rol="Desarrollador backend"/>
+        <participacion idAlumno="alm005" rol="Desarrollador frontend"/>
+      </participantes>
+    </proyecto>
+
+    <proyecto id="proy002" idResponsable="alm003">
+      <nombre>Análisis del Mercado Laboral IT</nombre>
+      <descripcion>Estudio de ofertas de empleo en tecnología para orientación vocacional del alumnado</descripcion>
+      <fechaInicio>2026-02-01</fechaInicio>
+      <presupuesto>200.00</presupuesto>
+      <estado>Planificado</estado>
+      <participantes>
+        <participacion idAlumno="alm003" rol="Analista principal"/>
+      </participantes>
+    </proyecto>
+
+    <proyecto id="proy003" idResponsable="alm001">
+      <nombre>Automatización de Copias de Seguridad</nombre>
+      <descripcion>Sistema automatizado de backups en la nube para los proyectos del alumnado</descripcion>
+      <fechaInicio>2025-06-01</fechaInicio>
+      <fechaEntrega>2025-12-31</fechaEntrega>
+      <presupuesto>350.00</presupuesto>
+      <estado>Evaluado</estado>
+      <participantes>
+        <participacion idAlumno="alm001" rol="Arquitecto de soluciones"/>
+        <participacion idAlumno="alm004" rol="Administrador de sistemas"/>
+      </participantes>
+    </proyecto>
+
+  </proyectos>
+
+</escuela>

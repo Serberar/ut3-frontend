@@ -1,0 +1,84 @@
+<!-- ============================================================
+     empresa.dtd
+     Definición de tipos para el documento XML de la escuela de programación.
+     Valida: estructura de elementos, atributos, ID/IDREF y opcionalidad.
+     Limitación respecto a XSD: no valida patrones, enumeraciones ni tipos numéricos.
+     ============================================================ -->
+
+<!-- Elemento raíz -->
+<!ELEMENT escuela (informacion, cursos, alumnos, proyectos?)>
+<!ATTLIST escuela
+  modalidad CDATA #REQUIRED>
+
+<!-- ============================================================
+     BLOQUE: Información general
+     ============================================================ -->
+<!ELEMENT informacion (nombre, cif, direccion, telefono, email, web?)>
+
+<!ELEMENT direccion (calle, numero, piso?, codigoPostal, ciudad, provincia, pais)>
+
+<!-- ============================================================
+     BLOQUE: Cursos
+     El + obliga a que haya al menos un curso
+     ID garantiza que cada @id es único en el documento
+     nivel es obligatorio pero DTD no puede restringir sus valores (limitación)
+     ============================================================ -->
+<!ELEMENT cursos (curso+)>
+<!ELEMENT curso  (nombre, descripcion?, responsable?, horasLectivas, precio)>
+<!ATTLIST curso
+  id    ID    #REQUIRED
+  nivel CDATA #REQUIRED>
+
+<!-- ============================================================
+     BLOQUE: Alumnos
+     IDREF en idCurso: el valor debe coincidir con un ID existente
+     ============================================================ -->
+<!ELEMENT alumnos (alumno+)>
+<!ELEMENT alumno  (nombre, apellidos, dni, estado, tasaMatricula, fechaMatricula, email, telefono?)>
+<!ATTLIST alumno
+  id      ID    #REQUIRED
+  idCurso IDREF #REQUIRED>
+
+<!-- ============================================================
+     BLOQUE: Proyectos (bloque opcional con ?)
+     ============================================================ -->
+<!ELEMENT proyectos (proyecto+)>
+<!ELEMENT proyecto  (nombre, descripcion?, fechaInicio, fechaEntrega?, presupuesto, estado, participantes)>
+<!ATTLIST proyecto
+  id            ID    #REQUIRED
+  idResponsable IDREF #REQUIRED>
+
+<!ELEMENT participantes  (participacion+)>
+<!ELEMENT participacion  EMPTY>
+<!ATTLIST participacion
+  idAlumno IDREF  #REQUIRED
+  rol      CDATA  #IMPLIED>
+
+<!-- ============================================================
+     DECLARACIONES DE ELEMENTOS DE TEXTO (#PCDATA)
+     Compartidos entre varios bloques (DTD no distingue por contexto)
+     ============================================================ -->
+<!ELEMENT nombre          (#PCDATA)>
+<!ELEMENT cif             (#PCDATA)>
+<!ELEMENT calle           (#PCDATA)>
+<!ELEMENT numero          (#PCDATA)>
+<!ELEMENT piso            (#PCDATA)>
+<!ELEMENT codigoPostal    (#PCDATA)>
+<!ELEMENT ciudad          (#PCDATA)>
+<!ELEMENT provincia       (#PCDATA)>
+<!ELEMENT pais            (#PCDATA)>
+<!ELEMENT telefono        (#PCDATA)>
+<!ELEMENT email           (#PCDATA)>
+<!ELEMENT web             (#PCDATA)>
+<!ELEMENT descripcion     (#PCDATA)>
+<!ELEMENT responsable     (#PCDATA)>
+<!ELEMENT horasLectivas   (#PCDATA)>
+<!ELEMENT precio          (#PCDATA)>
+<!ELEMENT apellidos       (#PCDATA)>
+<!ELEMENT dni             (#PCDATA)>
+<!ELEMENT estado          (#PCDATA)>
+<!ELEMENT tasaMatricula   (#PCDATA)>
+<!ELEMENT fechaMatricula  (#PCDATA)>
+<!ELEMENT fechaInicio     (#PCDATA)>
+<!ELEMENT fechaEntrega    (#PCDATA)>
+<!ELEMENT presupuesto     (#PCDATA)>

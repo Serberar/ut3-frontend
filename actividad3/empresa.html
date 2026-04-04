@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html xmlns:esc="http://escuelaprogramacion.es/schema" lang="es">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <meta charset="UTF-8">
+      <title>Escuela de Programación S.L.</title>
+      <style>
+          body { font-family: Arial, sans-serif; margin: 20px; }
+          h1 { color: #333; }
+          h2 { color: #555; margin-top: 25px; }
+          h3 { margin-top: 15px; }
+          table { border-collapse: collapse; width: 100%; margin-top: 8px; }
+          th { background-color: #4472C4; color: white; padding: 8px; text-align: left; }
+          td { border: 1px solid #ccc; padding: 6px; vertical-align: top; }
+          .info-grid { }
+          .info-item { display: inline-block; margin-right: 20px; margin-bottom: 8px; }
+          .info-label { font-weight: bold; }
+          .badge { padding: 2px 8px; color: white; font-size: 0.85em; margin-left: 6px; }
+          .estado-planificado   { background-color: #FBC02D; color: black; }
+          .estado-en-desarrollo { background-color: #E65100; }
+          .estado-entregado     { background-color: #1565C0; }
+          .estado-evaluado      { background-color: #2E7D32; }
+          .proyecto-card { border: 1px solid #ccc; padding: 10px; margin-bottom: 12px; }
+          ul.equipo { margin-left: 20px; }
+          footer { margin-top: 30px; color: #888; font-size: 0.8em; }
+        </style>
+   </head>
+   <body>
+      <div class="contenedor">
+         <h1>Escuela de Programación S.L.<small> — Modalidad: Presencial</small></h1>
+         <h2>Información general</h2>
+         <div class="info-grid">
+            <div class="info-item">
+               <div class="info-label">CIF</div>
+               <div>B1234567A</div>
+            </div>
+            <div class="info-item">
+               <div class="info-label">Teléfono</div>
+               <div>912345678</div>
+            </div>
+            <div class="info-item">
+               <div class="info-label">Email</div>
+               <div>info@escuelaprogramacion.es</div>
+            </div>
+            <div class="info-item">
+               <div class="info-label">Web</div>
+               <div>https://www.escuelaprogramacion.es</div>
+            </div>
+            <div class="info-item">
+               <div class="info-label">Dirección</div>
+               <div>Calle Gran Vía, 45 – 3B</div>
+            </div>
+            <div class="info-item">
+               <div class="info-label">Ciudad</div>
+               <div>28013 Madrid (Madrid)</div>
+            </div>
+         </div>
+         <h2>Cursos (3)</h2>
+         <table>
+            <tr>
+               <th>Nombre</th>
+               <th>Nivel</th>
+               <th>Horas</th>
+               <th>Precio</th>
+               <th>Responsable</th>
+               <th>Descripción</th>
+            </tr>
+            <tr>
+               <td>Administración de Sistemas</td>
+               <td>Intermedio</td>
+               <td>400 h</td>
+               <td>1.800,00 €</td>
+               <td>María González Pérez</td>
+               <td>Gestión de servidores Linux, virtualización, contenedores Docker y servicios en la nube</td>
+            </tr>
+            <tr>
+               <td>Desarrollo Web Full Stack</td>
+               <td>Avanzado</td>
+               <td>600 h</td>
+               <td>2.500,00 €</td>
+               <td>Carlos García López</td>
+               <td>Formación completa en tecnologías frontend y backend: HTML, CSS, JavaScript, Node.js y bases de datos</td>
+            </tr>
+            <tr>
+               <td>Python para Data Science</td>
+               <td>Intermedio</td>
+               <td>300 h</td>
+               <td>1.500,00 €</td>
+               <td>Luis Fernández Sánchez</td>
+               <td>Análisis de datos, machine learning y visualización con Python, pandas y scikit-learn</td>
+            </tr>
+         </table>
+         <h2>Alumnos (5)</h2>
+         <table>
+            <tr>
+               <th>Nombre</th>
+               <th>DNI</th>
+               <th>Estado</th>
+               <th>Tasa matrícula</th>
+               <th>Curso</th>
+               <th>Matrícula</th>
+            </tr>
+            <tr>
+               <td>Luis Fernández Sánchez</td>
+               <td>11223344C</td>
+               <td>Graduado</td>
+               <td>1.500,00 €</td>
+               <td>Python para Data Science</td>
+               <td>2022-03-01</td>
+            </tr>
+            <tr>
+               <td>Carlos García López</td>
+               <td>12345678A</td>
+               <td>Activo</td>
+               <td>2.500,00 €</td>
+               <td>Desarrollo Web Full Stack</td>
+               <td>2023-09-15</td>
+            </tr>
+            <tr>
+               <td>María González Pérez</td>
+               <td>55667788D</td>
+               <td>Activo</td>
+               <td>1.800,00 €</td>
+               <td>Administración de Sistemas</td>
+               <td>2024-01-10</td>
+            </tr>
+            <tr>
+               <td>Ana Martínez Ruiz</td>
+               <td>87654321B</td>
+               <td>Activo</td>
+               <td>2.500,00 €</td>
+               <td>Desarrollo Web Full Stack</td>
+               <td>2023-09-15</td>
+            </tr>
+            <tr>
+               <td>Javier Moreno Castillo</td>
+               <td>99887766E</td>
+               <td>Activo</td>
+               <td>2.500,00 €</td>
+               <td>Desarrollo Web Full Stack</td>
+               <td>2025-09-01</td>
+            </tr>
+         </table>
+         <h2>Proyectos (3)</h2>
+         <div class="proyecto-card">
+            <h3>Análisis del Mercado Laboral IT<span class="badge estado-planificado">Planificado</span></h3>
+            <p>Estudio de ofertas de empleo en tecnología para orientación vocacional del alumnado</p>
+            <table>
+               <tr>
+                  <th>Inicio</th>
+                  <th>Entrega</th>
+                  <th>Presupuesto</th>
+                  <th>Responsable</th>
+               </tr>
+               <tr>
+                  <td>2026-02-01</td>
+                  <td>Por determinar</td>
+                  <td>200,00 €</td>
+                  <td>Luis Fernández Sánchez</td>
+               </tr>
+            </table>
+            <p><strong>Equipo asignado:</strong></p>
+            <ul class="equipo">
+               <li>Luis Fernández Sánchez — Analista principal</li>
+            </ul>
+         </div>
+         <div class="proyecto-card">
+            <h3>Portal del Alumno<span class="badge estado-en-desarrollo">En desarrollo</span></h3>
+            <p>Aplicación web para consulta de notas, horarios y comunicación con la escuela</p>
+            <table>
+               <tr>
+                  <th>Inicio</th>
+                  <th>Entrega</th>
+                  <th>Presupuesto</th>
+                  <th>Responsable</th>
+               </tr>
+               <tr>
+                  <td>2026-01-10</td>
+                  <td>2026-06-30</td>
+                  <td>500,00 €</td>
+                  <td>Carlos García López</td>
+               </tr>
+            </table>
+            <p><strong>Equipo asignado:</strong></p>
+            <ul class="equipo">
+               <li>Carlos García López — Líder de proyecto</li>
+               <li>Ana Martínez Ruiz — Desarrollador backend</li>
+               <li>Javier Moreno Castillo — Desarrollador frontend</li>
+            </ul>
+         </div>
+         <div class="proyecto-card">
+            <h3>Automatización de Copias de Seguridad<span class="badge estado-evaluado">Evaluado</span></h3>
+            <p>Sistema automatizado de backups en la nube para los proyectos del alumnado</p>
+            <table>
+               <tr>
+                  <th>Inicio</th>
+                  <th>Entrega</th>
+                  <th>Presupuesto</th>
+                  <th>Responsable</th>
+               </tr>
+               <tr>
+                  <td>2025-06-01</td>
+                  <td>2025-12-31</td>
+                  <td>350,00 €</td>
+                  <td>Carlos García López</td>
+               </tr>
+            </table>
+            <p><strong>Equipo asignado:</strong></p>
+            <ul class="equipo">
+               <li>Carlos García López — Arquitecto de soluciones</li>
+               <li>María González Pérez — Administrador de sistemas</li>
+            </ul>
+         </div>
+         <footer>
+      Documento generado mediante transformación XSLT 1.0 desde empresa.xml
+    </footer>
+      </div>
+   </body>
+</html>

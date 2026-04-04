@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- TEST 2: Estado fuera de la enumeración definida en tipoEstadoAlumno -->
+<escuela xmlns="http://escuelaprogramacion.es/schema"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://escuelaprogramacion.es/schema ../../actividad1/empresa.xsd"
+         modalidad="Presencial">
+  <informacion>
+    <nombre>Escuela Test</nombre>
+    <cif>B1234567A</cif>
+    <direccion>
+      <calle>Calle Test</calle>
+      <numero>1</numero>
+      <codigoPostal>28001</codigoPostal>
+      <ciudad>Madrid</ciudad>
+      <provincia>Madrid</provincia>
+      <pais>España</pais>
+    </direccion>
+    <telefono>912345678</telefono>
+    <email>test@test.com</email>
+  </informacion>
+  <cursos>
+    <curso id="cur001" nivel="Intermedio">
+      <nombre>Curso Test</nombre>
+      <horasLectivas>100</horasLectivas>
+      <precio>500.00</precio>
+    </curso>
+  </cursos>
+  <alumnos>
+    <alumno id="alm001" idCurso="cur001">
+      <nombre>Test</nombre>
+      <apellidos>Usuario</apellidos>
+      <dni>12345678A</dni>
+      <!-- Estado inválido: "Abandonado" no existe en la enumeración.
+           Valores válidos: Activo, Graduado, Suspendido, Baja -->
+      <estado>Abandonado</estado>
+      <tasaMatricula>500.00</tasaMatricula>
+      <fechaMatricula>2024-01-01</fechaMatricula>
+      <email>test@test.com</email>
+    </alumno>
+  </alumnos>
+</escuela>

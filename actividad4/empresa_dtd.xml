@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE escuela SYSTEM "empresa.dtd">
+<!--
+  Documento XML validado contra empresa.dtd (sin namespace).
+  A diferencia de empresa.xml (Actividad 2), este documento no usa namespace
+  porque DTD no soporta semántica de namespaces.
+-->
+<escuela modalidad="Presencial">
+
+  <informacion>
+    <nombre>Escuela de Programación S.L.</nombre>
+    <cif>B1234567A</cif>
+    <direccion>
+      <calle>Calle Gran Vía</calle>
+      <numero>45</numero>
+      <piso>3B</piso>
+      <codigoPostal>28013</codigoPostal>
+      <ciudad>Madrid</ciudad>
+      <provincia>Madrid</provincia>
+      <pais>España</pais>
+    </direccion>
+    <telefono>912345678</telefono>
+    <email>info@escuelaprogramacion.es</email>
+    <web>https://www.escuelaprogramacion.es</web>
+  </informacion>
+
+  <cursos>
+    <curso id="cur001" nivel="Avanzado">
+      <nombre>Desarrollo Web Full Stack</nombre>
+      <descripcion>Formación completa en tecnologías frontend y backend</descripcion>
+      <responsable>alm001</responsable>
+      <horasLectivas>600</horasLectivas>
+      <precio>2500.00</precio>
+    </curso>
+    <curso id="cur002" nivel="Intermedio">
+      <nombre>Python para Data Science</nombre>
+      <responsable>alm003</responsable>
+      <horasLectivas>300</horasLectivas>
+      <precio>1500.00</precio>
+    </curso>
+  </cursos>
+
+  <alumnos>
+    <alumno id="alm001" idCurso="cur001">
+      <nombre>Carlos</nombre>
+      <apellidos>García López</apellidos>
+      <dni>12345678A</dni>
+      <estado>Activo</estado>
+      <tasaMatricula>2500.00</tasaMatricula>
+      <fechaMatricula>2023-09-15</fechaMatricula>
+      <email>carlos.garcia@escuelaprogramacion.es</email>
+      <telefono>612345678</telefono>
+    </alumno>
+    <alumno id="alm002" idCurso="cur001">
+      <nombre>Ana</nombre>
+      <apellidos>Martínez Ruiz</apellidos>
+      <dni>87654321B</dni>
+      <estado>Activo</estado>
+      <tasaMatricula>2500.00</tasaMatricula>
+      <fechaMatricula>2023-09-15</fechaMatricula>
+      <email>ana.martinez@escuelaprogramacion.es</email>
+    </alumno>
+    <alumno id="alm003" idCurso="cur002">
+      <nombre>Luis</nombre>
+      <apellidos>Fernández Sánchez</apellidos>
+      <dni>11223344C</dni>
+      <estado>Graduado</estado>
+      <tasaMatricula>1500.00</tasaMatricula>
+      <fechaMatricula>2022-03-01</fechaMatricula>
+      <email>luis.fernandez@escuelaprogramacion.es</email>
+    </alumno>
+  </alumnos>
+
+  <proyectos>
+    <proyecto id="proy001" idResponsable="alm001">
+      <nombre>Portal del Alumno</nombre>
+      <fechaInicio>2026-01-10</fechaInicio>
+      <fechaEntrega>2026-06-30</fechaEntrega>
+      <presupuesto>500.00</presupuesto>
+      <estado>En desarrollo</estado>
+      <participantes>
+        <participacion idAlumno="alm001" rol="Líder de proyecto"/>
+        <participacion idAlumno="alm002" rol="Desarrollador"/>
+      </participantes>
+    </proyecto>
+  </proyectos>
+
+</escuela>

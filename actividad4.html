@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Actividad 4 — Validación de documentos XML</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="volver-wrap">
+    <a class="volver" href="index.html">← Volver al inicio</a>
+  </div>
+
+  <div class="cabecera">
+    <p class="num">Actividad 4</p>
+    <h1>Validación de documentos XML</h1>
+    <p class="enunciado">Implementa validaciones usando DTD o XML Schema para garantizar la integridad de los documentos XML.</p>
+  </div>
+
+  <div class="contenido">
+
+    <div class="bloque bloque-solucion">
+      <div class="solucion">
+        <strong>Solución propuesta</strong>
+        <p>Se ha creado un verificador en Node.js usando la librería <code>@xmldom/xmldom</code>. Recibe el código XML, lo parsea y comprueba si cumple las reglas definidas.</p>
+        <p>Se han implementado dos tipos de validación:</p>
+        <ul>
+          <li><strong>DTD</strong> verifica la estructura del documento: que el elemento raíz sea correcto, que existan los elementos obligatorios y que las referencias entre elementos sean válidas.</li>
+          <li><strong>XSD</strong> verifica los datos de los alumnos: campos obligatorios, formato del DNI, estados permitidos, formato del email y que no haya DNIs repetidos.</li>
+        </ul>
+        <p class="solucion-nota">Para usar el validador: abre cualquiera de los tests de abajo, copia el XML, abre el validador online, pega el código, elige DTD o XSD y pulsa Verificar.</p>
+      </div>
+    </div>
+
+    <div class="bloque">
+      <h2>Revisión de archivos</h2>
+      <h3>Validador</h3>
+      <div class="ficheros">
+        <a class="fichero dest" href="actividad4/server.js">server.js</a>
+        <a class="fichero dest" href="actividad4/utils.js">utils.js</a>
+      </div>
+      <h3>Esquemas</h3>
+      <div class="ficheros">
+        <a class="fichero dest" href="actividad4/empresa.dtd">empresa.dtd</a>
+        <a class="fichero" href="actividad4/empresa_dtd.xml">empresa_dtd.xml</a>
+      </div>
+    </div>
+
+    <div class="bloque">
+      <h2>Validador online</h2>
+      <div class="ficheros">
+        <a class="fichero" href="validacion.html" target="_blank">Abrir validador online</a>
+      </div>
+    </div>
+
+    <div class="bloque">
+      <h2>Tests con errores deliberados</h2>
+      <div class="tests-lista">
+
+        <div class="test-item">
+          <a class="fichero" href="actividad4/tests/test_dni_invalido.xml">test_dni_invalido.xml</a>
+          <div class="test-resultados">
+            <span class="test-pasa">DTD: pasa — la DTD no valida el formato de los campos</span>
+            <span class="test-falla">XSD: falla — el DNI no cumple el formato esperado</span>
+          </div>
+        </div>
+
+        <div class="test-item">
+          <a class="fichero" href="actividad4/tests/test_estado_invalido.xml">test_estado_invalido.xml</a>
+          <div class="test-resultados">
+            <span class="test-pasa">DTD: pasa — la DTD no valida enumeraciones</span>
+            <span class="test-falla">XSD: falla — el estado no está entre los valores permitidos</span>
+          </div>
+        </div>
+
+        <div class="test-item">
+          <a class="fichero" href="actividad4/tests/test_raiz_incorrecta.xml">test_raiz_incorrecta.xml</a>
+          <div class="test-resultados">
+            <span class="test-falla">DTD: falla — el elemento raíz es &lt;empresa&gt; en lugar de &lt;escuela&gt;</span>
+            <span class="test-pasa">XSD: pasa — el XSD no comprueba el nombre del elemento raíz</span>
+          </div>
+        </div>
+
+        <div class="test-item">
+          <a class="fichero" href="actividad4/tests/test_idref_invalido.xml">test_idref_invalido.xml</a>
+          <div class="test-resultados">
+            <span class="test-falla">DTD: falla — idCurso apunta a un ID que no existe</span>
+            <span class="test-pasa">XSD: pasa — el XSD no valida referencias entre elementos</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <footer>Escuela de Programación S.L. · escuelaprogramacion.es</footer>
+
+</body>
+</html>

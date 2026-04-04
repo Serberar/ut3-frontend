@@ -1,0 +1,112 @@
+
+========================================
+  INFORME DE LA ESCUELA
+
+========================================
+
+ESCUELA  : Escuela de Programación S.L.
+CIF      : B1234567A
+MODALIDAD: Presencial
+TEL      : 912345678
+EMAIL    : info@escuelaprogramacion.es
+WEB      : https://www.escuelaprogramacion.es
+DIR      : Calle Gran Vía, 45 – 3B · 28013 Madrid (Madrid)
+========================================
+CURSOS (3)
+
+----------------------------------------
+
+[cur003] Administración de Sistemas (Intermedio)
+  Responsable : María González Pérez
+  Horas       : 400 h
+  Precio      : 1800.00 EUR
+  Descripcion : Gestión de servidores Linux, virtualización, contenedores Docker y servicios en la nube
+
+[cur001] Desarrollo Web Full Stack (Avanzado)
+  Responsable : Carlos García López
+  Horas       : 600 h
+  Precio      : 2500.00 EUR
+  Descripcion : Formación completa en tecnologías frontend y backend: HTML, CSS, JavaScript, Node.js y bases de datos
+
+[cur002] Python para Data Science (Intermedio)
+  Responsable : Luis Fernández Sánchez
+  Horas       : 300 h
+  Precio      : 1500.00 EUR
+  Descripcion : Análisis de datos, machine learning y visualización con Python, pandas y scikit-learn
+
+========================================
+ALUMNOS (5)
+
+----------------------------------------
+
+[alm003] Luis Fernández Sánchez
+  DNI         : 11223344C
+  Estado      : Graduado
+  Tasa        : 1500.00 EUR
+  Curso       : Python para Data Science
+  Matricula   : 2022-03-01
+
+[alm001] Carlos García López
+  DNI         : 12345678A
+  Estado      : Activo
+  Tasa        : 2500.00 EUR
+  Curso       : Desarrollo Web Full Stack
+  Matricula   : 2023-09-15
+  Telefono    : 612345678
+
+[alm004] María González Pérez
+  DNI         : 55667788D
+  Estado      : Activo
+  Tasa        : 1800.00 EUR
+  Curso       : Administración de Sistemas
+  Matricula   : 2024-01-10
+  Telefono    : 634567890
+
+[alm002] Ana Martínez Ruiz
+  DNI         : 87654321B
+  Estado      : Activo
+  Tasa        : 2500.00 EUR
+  Curso       : Desarrollo Web Full Stack
+  Matricula   : 2023-09-15
+  Telefono    : 623456789
+
+[alm005] Javier Moreno Castillo
+  DNI         : 99887766E
+  Estado      : Activo
+  Tasa        : 2500.00 EUR
+  Curso       : Desarrollo Web Full Stack
+  Matricula   : 2025-09-01
+
+========================================
+PROYECTOS (3)
+
+----------------------------------------
+
+[proy002] Análisis del Mercado Laboral IT [Planificado]
+  Inicio      : 2026-02-01
+  Entrega     : Por determinar
+  Presupuesto : 200.00 EUR
+  Responsable : Luis Fernández Sánchez
+  Equipo      :
+    - Luis Fernández Sánchez (Analista principal)
+
+[proy001] Portal del Alumno [En desarrollo]
+  Inicio      : 2026-01-10
+  Entrega     : 2026-06-30
+  Presupuesto : 500.00 EUR
+  Responsable : Carlos García López
+  Equipo      :
+    - Carlos García López (Líder de proyecto)
+    - Ana Martínez Ruiz (Desarrollador backend)
+    - Javier Moreno Castillo (Desarrollador frontend)
+
+[proy003] Automatización de Copias de Seguridad [Evaluado]
+  Inicio      : 2025-06-01
+  Entrega     : 2025-12-31
+  Presupuesto : 350.00 EUR
+  Responsable : Carlos García López
+  Equipo      :
+    - Carlos García López (Arquitecto de soluciones)
+    - María González Pérez (Administrador de sistemas)
+
+Documento generado mediante transformación XSLT 1.0

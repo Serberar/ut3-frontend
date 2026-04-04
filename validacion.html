@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Validador XML</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="validacion.js" defer></script>
+</head>
+<body>
+<div class="validador">
+
+  <h1>Validador XML</h1>
+  <p>Pega el código XML, elige el tipo de validación y pulsa Verificar.</p>
+
+  <div class="validador-modos">
+    <div class="validador-modo">
+      <h3>XSD — XML Schema</h3>
+      <p>Valida los datos obligatorios de los alumnos.</p>
+    </div>
+    <div class="validador-modo">
+      <h3>DTD — Document Type Definition</h3>
+      <p>Valida la estructura del documento.</p>
+    </div>
+  </div>
+
+  <div class="validador-fila">
+    <select id="modo">
+      <option value="xsd">XSD (empresa.xsd)</option>
+      <option value="dtd">DTD (empresa.dtd)</option>
+    </select>
+    <button onclick="verificar()">Verificar</button>
+    <button class="secundario" onclick="limpiar()">Limpiar</button>
+  </div>
+
+  <textarea id="xml" spellcheck="false" placeholder="<?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#10;<escuela ...>&#10;  ...&#10;</escuela>"></textarea>
+
+  <div id="resultado"></div>
+
+</div>
+</body>
+</html>
